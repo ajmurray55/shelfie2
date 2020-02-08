@@ -1,6 +1,7 @@
 require("dotenv").config();
 const massive = require("massive");
 const express = require("express");
+const ctrl = require('./controller')
 
 
 const app = express();
@@ -17,8 +18,14 @@ massive(CONNECTION_STRING)
 })
 .catch(err => console.log(err));
 
+app.get('/api/inventory', ctrl.getInventory);
+app.get('/api/inventory/:id', ctrl.getOne);
+// app.put('/api/inventory/:id', ctrl.update);
+app.post('/api/inventory', ctrl.createInventory);
+// app.delete('/api/inventory/:id', ctrl.delete);
+
 
 
 app.listen(SERVER_PORT, () =>
-console.log(`Yor are on SERVER PORT ${SERVER_PORT}`)
+console.log(`Your are on SERVER PORT ${SERVER_PORT}`)
 );

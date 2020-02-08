@@ -5,7 +5,9 @@ class Dashboard extends Component {
         super()
 
         this.state = {
-
+            name: "",
+            price: "",
+            image_url: ""
         }
     }
 
